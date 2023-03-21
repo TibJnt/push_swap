@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjeunet <tjeunet@student.42barcel>         +#+  +:+       +#+        */
+/*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 10:50:28 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/20 10:50:28 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/21 15:49:43 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@ void ft_free_stack(t_stack *stack)
     t_node *next_node;
 
     if (stack == NULL)
-        return (NULL);
+        return ;
     current_node = stack->top;
-    while (current_node != NULL) {
+    while (current_node != NULL) 
+    {
         next_node = current_node->next;
         free(current_node);
         current_node = next_node;

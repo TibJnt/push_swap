@@ -20,18 +20,16 @@ OBJ_SRC 			= $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
 
 # =========================== SOURCES ======================================== #
 
-SRC = main.c free_resources.c\
-		parse/parse.c parse/sort_input.c\
-		stack/stack.c\
-		sort/sort.c sort/sort_all.c sort/return_stack_b.c\
- 		operations/swap.c operations/push.c operations/rotate.c\
-		operations/reverse_rotate.c\
+SRC = main.c free_ops/free.c\
+		parse/parse.c \
+		stack_operations/stack_ops.c stack_operations/stack_utils.c \
+		sort_operations/sort.c\
 
 VPATH = $(SRC_DIR)\
-		 $(SRC_DIR)stack\
+		 $(SRC_DIR)stack_operations\
 		 $(SRC_DIR)parse\
-		 $(SRC_DIR)operations\
-		 $(SRC_DIR)sort
+		 $(SRC_DIR)free_ops\
+		 $(SRC_DIR)sort_operations
 
 # =========================== BOLD COLORS ==================================== #
 

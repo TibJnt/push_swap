@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjeunet <tjeunet@student.42barcel>         +#+  +:+       +#+        */
+/*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:06:26 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/20 19:06:26 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/21 15:50:12 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ t_node *ft_new_node(int value, int *sorted_array) {
     return new_node;
 }
 
-int ft_find_index(int value, int *sorted_array) {
+int ft_find_index(int value, int *sorted_array) 
+{
     int i;
 
     i = 0;
@@ -48,4 +49,17 @@ t_stack *ft_init_stack() {
     new_stack->top = NULL;
     new_stack->size = 0;
     return new_stack;
+}
+
+
+void	ft_initialize_stack_a(t_stack *stack_a, t_list *reverse_input, int *sorted_array)
+{
+	int	*number;
+
+	while (reverse_input)
+	{
+		number = reverse_input->content;
+		ft_stack_push(stack_a, ft_new_node(*number, sorted_array));
+		reverse_input = reverse_input->next;
+	}
 }
