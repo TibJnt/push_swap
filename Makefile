@@ -23,7 +23,7 @@ OBJ_SRC 			= $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
 SRC = main.c free_ops/free.c\
 		parse/parse.c \
 		stack_operations/stack_ops.c stack_operations/stack_utils.c \
-		sort_operations/sort.c\
+		sort_operations/sort.c sort_operations/operations.c\
 
 VPATH = $(SRC_DIR)\
 		 $(SRC_DIR)stack_operations\

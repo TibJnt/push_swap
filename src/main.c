@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 12:15:20 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/23 13:13:08 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/23 16:37:00 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,10 @@ int main (int argc, char **argv)
 	}
 
 	ft_lstclear(&reverse_input, ft_free_null);
-	ft_printf("stack_size = %d", stack_a.size);
-	//ft_print_stack(&stack_a);
+	ft_printf("stack_size = %d\n\n", stack_a.size);
+	ft_print_stack(&stack_a);
+	ft_swap(&stack_a, SWAP_A);
+	ft_print_stack(&stack_a);
+
 	return (SUCCESS);
 }

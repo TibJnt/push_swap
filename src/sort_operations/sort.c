@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjeunet <tjeunet@student.42barcel>         +#+  +:+       +#+        */
+/*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:10:22 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/20 19:10:22 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/23 16:10:22 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,3 +76,5 @@ void	ft_add_number_sorting(t_list *new, t_list **list)
 	}
 	ft_lstadd_back(list, new);
 }
+
+

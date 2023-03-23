@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 12:47:12 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/23 13:01:27 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/23 16:19:00 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,72 +36,6 @@ int ft_find_index(int value, int *sorted_array)
     return (i);
 }
 
-void swap(t_stack *stack) 
-{
-    t_node *first_node;
-    t_node *second_node;
-    int     temp;
-
-    if (stack == NULL || stack->top == NULL || stack->top->next == NULL) 
-        return ;
-    first_node = stack->top;
-    second_node = stack->top->next;
-    temp = first_node->value;
-    first_node->value = second_node->value;
-    second_node->value = temp;
-}
-
-void push(t_stack *src, t_stack *dest) 
-{
-    t_node *src_top_node;
-
-    if (src == NULL || dest == NULL || src->top == NULL) 
-        return ;
-    src_top_node = src->top;
-    src->top = src->top->next;
-    src->size--;
-    src_top_node->next = dest->top;
-    dest->top = src_top_node;
-    dest->size++;
-}
-
-void rotate(t_stack *stack) 
-{
-    t_node *first_node;
-    t_node *second_node;
-    t_node *current_node;
-
-    if (stack == NULL || stack->top == NULL || stack->top->next == NULL)
-        return ;
-    first_node = stack->top;
-    second_node = stack->top->next;
-    stack->top = second_node;
-    current_node = second_node;
-    while (current_node->next != NULL)
-        current_node = current_node->next;
-    current_node->next = first_node;
-    first_node->next = NULL;
-}
-
-void reverse_rotate(t_stack *stack) 
-{
-    t_node *last_node;
-    t_node *second_last_node;
-
-    if (stack == NULL || stack->top == NULL || stack->top->next == NULL)
-        return ;
-    last_node = stack->top;
-    second_last_node = NULL;
-    while (last_node->next != NULL) 
-    {
-        second_last_node = last_node;
-        last_node = last_node->next;
-    }
-    second_last_node->next = NULL;
-    last_node->next = stack->top;
-    stack->top = last_node;
-}
-
 void	ft_stack_push(t_stack *stack, t_node *node)
 {
 	t_node	*top;
@@ -125,4 +59,3 @@ void	ft_connect(t_node *first, t_node *second)
 	first->next = second;
 	second->prev = first;
 }
-

@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:35:22 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/23 12:31:00 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/23 16:21:20 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 # define SWAP_A			"sa\n"
 # define SWAP_B			"sb\n"
-# define SWAP			"ss\n"
+# define SWAP_DOUBLE	"ss\n"
 # define PUSH_A			"pa\n"
 # define PUSH_B			"pb\n"
 # define ROTATE_A		"ra\n"
@@ -63,6 +63,10 @@ void	ft_add_number_sorting(t_list *new, t_list **list);
 
 void	ft_sort(t_stack *stack_a, int *sort);
 int	    ft_is_already_sort(t_list *list);
+void    swap(t_stack *stack);
+void    push(t_stack *stack_a, t_stack *stack_b);
+void    rotate(t_stack *stack);
+void	ft_swap(t_stack *stack, char *option);
 
 // ========================== STACK ===================================== //
 
