@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 12:47:12 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/21 15:52:19 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/23 13:01:27 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_node *create_new_node(int value, int *sorted_array)
         return (NULL);
     new_node->value = value;
     new_node->next = NULL;
+    new_node->prev = NULL;
     new_node->index = ft_find_index(value, sorted_array);
     return new_node;
 }

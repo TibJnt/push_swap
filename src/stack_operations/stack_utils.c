@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:06:26 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/21 15:50:12 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/23 13:06:34 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,6 @@ t_node *ft_new_node(int value, int *sorted_array) {
     new_node->next = NULL;
     new_node->index = ft_find_index(value, sorted_array);
     return new_node;
-}
-
-int ft_find_index(int value, int *sorted_array) 
-{
-    int i;
-
-    i = 0;
-    while (sorted_array[i] != value)
-        i++;
-    return (i);
 }
 
 t_stack *ft_init_stack() {
@@ -63,3 +53,19 @@ void	ft_initialize_stack_a(t_stack *stack_a, t_list *reverse_input, int *sorted_
 		reverse_input = reverse_input->next;
 	}
 }
+
+void    ft_print_stack(const t_stack *stack) {
+    if (stack == NULL || stack->top == NULL) {
+        ft_printf("Empty stack.\n");
+        return;
+    }
+
+    t_node *current_node = stack->top;
+
+    ft_printf("Stack contents:\n");
+    while (current_node != NULL) {
+        ft_printf("Value: %d, Index: %d\n", current_node->value, current_node->index);
+        current_node = current_node->next;
+    }
+}
+

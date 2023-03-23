@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:35:22 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/21 16:01:08 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/23 12:31:00 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ t_node	*ft_new_stack_node(int element);
 void	ft_stack_push(t_stack *stack, t_node *node);
 void	ft_initialize_stack_a(t_stack *stack_a, t_list *reverse_input, int *sorted_array);
 int     ft_find_index(int value, int *sorted_array);
+void    ft_print_stack(const t_stack *stack);
 
 //free_resorces.c
 void	ft_free_list(t_list **lst);
