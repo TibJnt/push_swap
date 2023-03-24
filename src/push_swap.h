@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:35:22 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/23 16:21:20 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/24 14:35:33 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,14 @@ void	ft_add_number_sorting(t_list *new, t_list **list);
 
 // ========================== SORT ===================================== //
 
-void	ft_sort(t_stack *stack_a, int *sort);
+void	ft_sort(t_stack *stack_a);
 int	    ft_is_already_sort(t_list *list);
 void    swap(t_stack *stack);
 void    push(t_stack *stack_a, t_stack *stack_b);
 void    rotate(t_stack *stack);
 void	ft_swap(t_stack *stack, char *option);
+void	ft_sort_three(t_stack *stack_a);
+void 	ft_sort_big(t_stack *stack_a);
 
 // ========================== STACK ===================================== //
 

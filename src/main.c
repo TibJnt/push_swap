@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 12:15:20 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/23 16:37:00 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/24 14:35:15 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void print_linked_list(const t_list *list)
     printf("Linked list contents:\n");
     while (current != NULL)
     {
-        int value = *((int *)current->content); // Assuming content is of int type
+        int value = *((int *)current->content);
         printf("%d\n", value);
         current = current->next;
     }
@@ -65,8 +65,17 @@ int main (int argc, char **argv)
 	ft_lstclear(&reverse_input, ft_free_null);
 	ft_printf("stack_size = %d\n\n", stack_a.size);
 	ft_print_stack(&stack_a);
-	ft_swap(&stack_a, SWAP_A);
+
+	// sort the stack
+	ft_sort(&stack_a);
 	ft_print_stack(&stack_a);
+	// If the stack has only two elements, swap them.
+
+
+	// If the stack has only three elements, sort them.
+
+	// If the stack has more than three elements, sort them.
+
 
 	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:10:22 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/23 16:10:22 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/24 15:47:47 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,3 +78,45 @@ void	ft_add_number_sorting(t_list *new, t_list **list)
 }
 
 
+void ft_sort(t_stack *stack_a)
+{
+	if (stack_a->size == 2)
+		ft_swap(stack_a, SWAP_A);
+	else if (stack_a->size == 3)
+		ft_sort_three(stack_a);
+	else
+		ft_sort_big(stack_a);
+}
+
+void ft_sort_three(t_stack *stack_a) {
+    if (stack_a == NULL || stack_a->size != 3) {
+        return;
+    }
+
+    t_node *first = stack_a->top;
+    t_node *second = first->next;
+    t_node *third = second->next;
+
+    if (first->index > second->index && second->index < third->index && first->index < third->index) {
+        ft_swap(stack_a, "sa");
+    } else if (first->index > second->index && second->index > third->index && first->index > third->index) {
+        ft_swap(stack_a, "sa");
+        ft_rev_rotate(stack_a, "rra");
+    } else if (first->index > second->index && second->index < third->index && first->index > third->index) {
+        ft_rotate(stack_a, "ra");
+    } else if (first->index < second->index && second->index > third->index && first->index < third->index) {
+        ft_swap(stack_a, "sa");
+        ft_rotate(stack_a, "ra");
+    } else if (first->index < second->index && second->index > third->index && first->index > third->index) {
+        ft_rev_rotate(stack_a, "rra");
+    }
+}
+
+
+void 	ft_sort_big(t_stack *stack_a)
+{
+	t_stack	stack_b;
+
+	ft_new_stack(&stack_b);
+	
+}
