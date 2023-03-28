@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
+/*   By: tjeunet <tjeunet@student.42barcel>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 16:06:11 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/24 14:31:47 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/27 16:03:31 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,62 @@ void ft_rev_rotate(t_stack *stack, char *option) {
 
 	stack->top = last;
 
+	ft_printf("%s", option);
+}
+
+t_node *ft_pop(t_stack *stack)
+{
+    t_node *top_node;
+
+    // If the stack is empty, return NULL.
+    if (stack == NULL || stack->top == NULL)
+    {
+        return NULL;
+    }
+
+    // Get the top element of the stack.
+    top_node = stack->top;
+
+    // Update the stack's top to point to the next element.
+    stack->top = top_node->next;
+
+    // If the new top element is not NULL, update its prev to point to the last element.
+    if (stack->top != NULL)
+    {
+        stack->top->prev = top_node->prev;
+    }
+
+    // If the last element is not NULL, update its next to point to the new top element.
+    if (top_node->prev != NULL)
+    {
+        top_node->prev->next = stack->top;
+    }
+
+    // Disconnect the popped node from the stack.
+    top_node->next = NULL;
+    top_node->prev = NULL;
+
+    // Return the popped node.
+    return top_node;
+}
+
+
+void ft_push_node(t_stack *src, t_stack *dest, char *option)
+{
+	t_node *node;
+
+	// Pop the top element from the source stack.
+	node = ft_pop(src);
+
+	// If the source stack is empty, return.
+	if (node == NULL)
+	{
+		return;
+	}
+
+	// Push the popped element to the destination stack.
+	ft_stack_push(dest, node);
+
+	// Print the operation.
 	ft_printf("%s", option);
 }

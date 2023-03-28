@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
+/*   By: tjeunet <tjeunet@student.42barcel>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:06:26 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/23 15:33:20 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/27 16:03:26 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_initialize_stack_a(t_stack *stack_a, t_list *reverse_input, int *sorted_
 	while (reverse_input)
 	{
 		number = reverse_input->content;
-		ft_stack_push(stack_a, ft_new_node(*number, sorted_array));
+		ft_stack_push(stack_a, ft_create_new_node(*number, sorted_array));
 		reverse_input = reverse_input->next;
 	}
 }

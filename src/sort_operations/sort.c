@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
+/*   By: tjeunet <tjeunet@student.42barcel>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:10:22 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/24 15:47:47 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/28 10:19:43 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,45 @@ void ft_sort_three(t_stack *stack_a) {
 void 	ft_sort_big(t_stack *stack_a)
 {
 	t_stack	stack_b;
+	int		size;
+	int		max_num;
+	int		max_bits;
+	int		i;
+	int		j;
 
 	ft_new_stack(&stack_b);
+	size = stack_a->size;
+	max_num = size - 1;
+	max_bits = 0;
+	while (max_num)
+	{
+		max_num = max_num >> 1;
+		max_bits++;
+	}
+	i = 0;
+	while (i < max_bits)
+	{
+		ft_sort_digits(stack_a, &stack_b, i);
+		i++;
+	}
+	while (stack_b->size)
+		ft_push_node(stack_b, stack_a, PUSH_A);
 	
+}
+
+void	ft_sort_digits(t_stack *stack_a, t_stack *stack_b, int bit)
+{
+	int	num;
+	int	i;
+
+	i = 0;
+	while (i < stack_a->size)
+	{
+		num = stack_a->top->index;
+		if ((num >> bit) & 1)
+			ft_rotate(stack_a, ROTATE_A);
+		else
+			ft_push_node(stack_a, stack_b, PUSH_B);
+		i++;
+	}
 }

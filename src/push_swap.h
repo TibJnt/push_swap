@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
+/*   By: tjeunet <tjeunet@student.42barcel>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:35:22 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/24 14:35:33 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/28 10:18:15 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	ft_rotate(t_stack *stack, char *option);
 void	ft_double_rotate(t_stack *stack_a, t_stack *stack_b);
 void	ft_swap(t_stack *stack, char *option);
 void	ft_double_swap(t_stack *stack_a, t_stack *stack_b);
+t_node  *ft_pop(t_stack *stack);
+void    ft_push_node(t_stack *src, t_stack *dest, char *option);
 
 // ========================== PARSE =================================== //
 
@@ -69,6 +71,7 @@ void    rotate(t_stack *stack);
 void	ft_swap(t_stack *stack, char *option);
 void	ft_sort_three(t_stack *stack_a);
 void 	ft_sort_big(t_stack *stack_a);
+void	ft_sort_digits(t_stack *stack_a, t_stack *stack_b, int bit);
 
 // ========================== STACK ===================================== //
 
@@ -81,7 +84,7 @@ void	ft_initialize_stack_a(t_stack *stack_a, t_list *reverse_input, int *sorted_
 int     ft_find_index(int value, int *sorted_array);
 void    ft_print_stack(const t_stack *stack);
 
-//free_resorces.c
+//free.c
 void	ft_free_list(t_list **lst);
 void	ft_free_char_2pointer(char **pointer);
 void	ft_free_null(void *pointer);
