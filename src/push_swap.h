@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcel>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:35:22 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/28 10:18:15 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/28 10:44:08 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	ft_sort_digits(t_stack *stack_a, t_stack *stack_b, int bit);
 void	ft_connect(t_node *first, t_node *second);
 void	ft_new_stack(t_stack *stack);
 t_node	*ft_stack_pop(t_stack *stack);
-t_node	*ft_new_stack_node(int element);
+t_node *ft_create_new_node(int value, int *sorted_array);
 void	ft_stack_push(t_stack *stack, t_node *node);
 void	ft_initialize_stack_a(t_stack *stack_a, t_list *reverse_input, int *sorted_array);
 int     ft_find_index(int value, int *sorted_array);

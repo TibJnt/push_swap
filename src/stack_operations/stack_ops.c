@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   stack_ops.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
+/*   By: tjeunet <tjeunet@student.42barcel>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 12:47:12 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/23 16:19:00 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/28 10:41:59 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node *create_new_node(int value, int *sorted_array) 
+t_node *ft_create_new_node(int value, int *sorted_array) 
 {
     t_node *new_node;
     
