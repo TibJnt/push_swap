@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjeunet <tjeunet@student.42barcel>         +#+  +:+       +#+        */
+/*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:10:22 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/28 11:46:33 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/29 12:42:37 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ void ft_sort_three(t_stack *stack_a) {
     t_node *second = first->next;
     t_node *third = second->next;
 
+	ft_printf("begin sort three\n");
     if (first->index > second->index && second->index < third->index && first->index < third->index) {
         ft_swap(stack_a, "sa");
     } else if (first->index > second->index && second->index > third->index && first->index > third->index) {
@@ -134,10 +135,20 @@ void 	ft_sort_big(t_stack *stack_a)
 	i = 0;
 	while (i < max_bits)
 	{
+		ft_printf("SORT %d DIGIT\n", i);
 		ft_sort_digits(stack_a, &stack_b, i);
+		ft_print_stack(stack_a, "A");
+		ft_print_stack(&stack_b, "B");
+		ft_printf("STACK A SIZE = %d // ALT VALUE = %d \n", stack_a->size, ft_stack_node_count(stack_a));
+		ft_printf("STACK B SIZE = %d // ALT VALUE = %d \n", stack_b.size, ft_stack_node_count(&stack_b));
 		while (stack_b.size)
 			ft_push_node(&stack_b, stack_a, PUSH_A);
+		ft_print_stack(stack_a, "A");
+		ft_print_stack(&stack_b, "B");
+		ft_printf("STACK A SIZE = %d // ALT VALUE = %d \n", stack_a->size, ft_stack_node_count(stack_a));
+		ft_printf("STACK B SIZE = %d // ALT VALUE = %d \n", stack_b.size, ft_stack_node_count(&stack_b));
 		i++;
+
 	}	
 }
 

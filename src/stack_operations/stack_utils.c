@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjeunet <tjeunet@student.42barcel>         +#+  +:+       +#+        */
+/*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:06:26 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/28 10:41:22 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/29 13:41:03 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,12 @@ void	ft_initialize_stack_a(t_stack *stack_a, t_list *reverse_input, int *sorted_
 	{
 		number = reverse_input->content;
 		ft_stack_push(stack_a, ft_create_new_node(*number, sorted_array));
+        ft_print_stack(stack_a, "A");
 		reverse_input = reverse_input->next;
 	}
 }
 
-void    ft_print_stack(const t_stack *stack) 
+void    ft_print_stack(const t_stack *stack, char *option) 
 {
     if (stack == NULL || stack->top == NULL) 
     {
@@ -64,12 +65,28 @@ void    ft_print_stack(const t_stack *stack)
 
     t_node *current_node = stack->top;
 
-    ft_printf("Stack contents:\n");
+    ft_printf("Stack contents %s :\n", option);
     while (current_node->next != stack->top) 
     {
-        ft_printf("Value: %d, Index: %d\n", current_node->value, current_node->index);
+        ft_printf("Value: %d, Index: %d, Prev: %p, Current: %p, Next: %p\n", current_node->value, current_node->index, current_node->prev, current_node->next);
         current_node = current_node->next;
     }
-    ft_printf("Value: %d, Index: %d\n", current_node->value, current_node->index);
+    ft_printf("Value: %d, Index: %d, Prev: %p, Current: %p, Next: %p\n", current_node->value, current_node->index, current_node->prev, current_node->next);
 }
 
+int ft_stack_node_count(t_stack *stack) 
+{
+    if (stack == NULL || stack->top == NULL) {
+        return 0;
+    }
+
+    t_node *current_node = stack->top;
+    int count = 0;
+
+    do {
+        count++;
+        current_node = current_node->next;
+    } while (current_node != stack->top);
+
+    return count;
+}
