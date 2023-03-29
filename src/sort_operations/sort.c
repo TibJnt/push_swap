@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcel>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:10:22 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/28 10:22:56 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/28 11:46:33 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,12 +130,13 @@ void 	ft_sort_big(t_stack *stack_a)
 		max_num = max_num >> 1;
 		max_bits++;
 	}
+	ft_printf("\nmax_bits: %d\n", max_bits);
 	i = 0;
 	while (i < max_bits)
 	{
 		ft_sort_digits(stack_a, &stack_b, i);
-		while (stack_b->size)
-			ft_push_node(stack_b, stack_a, PUSH_A);
+		while (stack_b.size)
+			ft_push_node(&stack_b, stack_a, PUSH_A);
 		i++;
 	}	
 }

@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcel>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 16:06:11 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/27 16:03:31 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/29 09:43:54 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,17 @@ void	ft_double_swap(t_stack *stack_a, t_stack *stack_b)
 }
 
 void ft_rotate(t_stack *stack, char *option) {
-    if (stack == NULL || stack->size <= 2) {
-        return;
+    if (stack == NULL || stack->size < 2) {
+		return;
     }
-
+	
 	t_node *first = stack->top;
 
     t_node *second = first->next;
 
-
 	stack->top = second;
 	
 	ft_printf("%s", option);
-
 }
 
 void ft_rev_rotate(t_stack *stack, char *option) {
@@ -107,6 +105,9 @@ t_node *ft_pop(t_stack *stack)
     // Disconnect the popped node from the stack.
     top_node->next = NULL;
     top_node->prev = NULL;
+
+	// Update the stack's size.
+	stack->size--;
 
     // Return the popped node.
     return top_node;

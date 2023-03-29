@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcel>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 12:47:12 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/28 10:41:59 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/28 12:56:17 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	ft_stack_push(t_stack *stack, t_node *node)
 
 	top = stack->top;
 	if (!top)
-		ft_connect(node, node);
+		// ft_connect(node, node);
+		stack->top = node;
 	else
 	{
 		last = top->prev;
