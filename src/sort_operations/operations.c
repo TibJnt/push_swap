@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 16:06:11 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/29 12:54:46 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/30 11:46:49 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ void ft_push_node(t_stack *src, t_stack *dest, char *option)
 		ft_printf("Node is null in POP function\n");
 		return;
 	}
-	ft_printf("This node was popped / value: %d,  index: %d\n", node->value, node->index);
+	ft_printf("This node was popped / value: %d,  index: %d, prev: %p, current: %p, next: %p\n", node->value, node->index, node->prev, node, node->next);
 
 	// Push the popped element to the destination stack.
 	ft_stack_push(dest, node);
@@ -144,34 +144,50 @@ void ft_push_node(t_stack *src, t_stack *dest, char *option)
 
 
 
-t_node *ft_pop(t_stack *stack)
+// t_node *ft_pop(t_stack *stack)
+// {
+//     t_node *top_node;
+
+//     if (stack == NULL || stack->top == NULL)
+//     {
+//         return NULL;
+//     }
+
+//     top_node = stack->top;
+//     stack->top = top_node->next;
+
+//     if (stack->top != NULL)
+//     {
+//         stack->top->prev = top_node->prev;
+//     }
+
+//     if (top_node->prev != NULL)
+//     {
+//         top_node->prev->next = stack->top;
+//     }
+
+//     top_node->next = NULL;
+//     top_node->prev = NULL;
+//     stack->size--;
+
+//     return top_node;
+// }
+
+
+
+t_node	*ft_pop(t_stack *stack)
 {
-    t_node *top_node;
+	t_node	*last;
+	t_node	*node;
 
-    if (stack == NULL || stack->top == NULL)
-    {
-        return NULL;
-    }
-
-    top_node = stack->top;
-    stack->top = top_node->next;
-
-    if (stack->top != NULL)
-    {
-        stack->top->prev = top_node->prev;
-    }
-
-    if (top_node->prev != NULL)
-    {
-        top_node->prev->next = stack->top;
-    }
-
-    top_node->next = NULL;
-    top_node->prev = NULL;
-    stack->size--;
-
-    return top_node;
+	node = stack->top;
+	if (!node)
+		return (NULL);
+	stack->top = node->next;
+	last = node->prev;
+	ft_connect(last, stack->top);
+	node->prev = NULL;
+	node->next = NULL;
+	stack->size--;
+	return (node);
 }
-
-
-

@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 12:15:20 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/29 13:23:53 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/30 10:46:54 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void print_linked_list(const t_list *list)
     while (current != NULL)
     {
         int value = *((int *)current->content);
-        printf("Value: %d, Next: %p \n", value, current->next);
+        printf("Value: %d, Current: %p, Next: %p \n", value, current, current->next);
         current = current->next;
     }
 }

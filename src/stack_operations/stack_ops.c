@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 12:47:12 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/29 14:10:36 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/30 11:31:32 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,56 +36,56 @@ int ft_find_index(int value, int *sorted_array)
     return (i);
 }
 
-// void	ft_stack_push(t_stack *stack, t_node *node)
-// {
-// 	t_node	*top;
-// 	t_node	*last;
-
-// 	if (!stack || !node) {
-//         ft_printf("problem pushing the node in ft_stack_push : Stack or node is NULL\n");
-//         return;
-//     }
-
-// 	top = stack->top;
-// 	if (!top)
-// 	{
-// 		ft_connect(node, node);
-// 		stack->top = node;
-// 	}
-// 	else
-// 	{
-// 		last = top->prev;
-// 		ft_connect(last, node);
-// 		ft_connect(node, top);
-// 	}
-// 	stack->top = node;
-// 	stack->size++;
-// }
-
-void ft_stack_push(t_stack *stack, t_node *node)
+void	ft_stack_push(t_stack *stack, t_node *node)
 {
-    if (!stack || !node) {
+	t_node	*top;
+	t_node	*last;
+
+	if (!stack || !node) {
+        ft_printf("problem pushing the node in ft_stack_push : Stack or node is NULL\n");
         return;
     }
 
-    t_node *top;
-    t_node *last;
-
-    top = stack->top;
-    if (!top)
-    {
-        ft_connect(node, node);
-        stack->top = node;
-    }
-    else
-    {
-        last = top->prev;
-        ft_connect(last, node);
-        ft_connect(node, top);
-        stack->top = node;
-    }
-    stack->size++;
+	top = stack->top;
+	if (!top)
+	{
+		ft_connect(node, node);
+		stack->top = node;
+	}
+	else
+	{
+		last = top->prev;
+		ft_connect(last, node);
+		ft_connect(node, top);
+	}
+	stack->top = node;
+	stack->size++;
 }
+
+// void ft_stack_push(t_stack *stack, t_node *node)
+// {
+//    t_node  *top;
+
+//     if (!stack || !node) {
+//          ft_printf("problem pushing the node in ft_stack_push : Stack or node is NULL\n");
+//         return;
+//      }
+
+//     top = stack->top;
+//     if (!top)
+//     {
+//         node->next = NULL;
+//         node->prev = NULL;
+//     }
+//     else
+//     {
+//         node->next = top;
+//         node->prev = NULL;
+//         top->prev = node;
+//     }
+//     stack->top = node;
+//     stack->size++;
+// }
 
 void	ft_connect(t_node *first, t_node *second)
 {
