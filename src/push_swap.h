@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:35:22 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/30 12:14:33 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/31 14:43:32 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void	ft_swap(t_stack *stack, char *option);
 void	ft_sort_three(t_stack *stack_a);
 void 	ft_sort_big(t_stack *stack_a);
 void	ft_sort_digits(t_stack *stack_a, t_stack *stack_b, int bit);
+void	ft_sort_five(t_stack *stack_a);
+void	ft_sort_four(t_stack *stack_a);
 
 // ========================== STACK ===================================== //
 
@@ -85,6 +87,7 @@ int     ft_find_index(int value, int *sorted_array);
 void    ft_print_stack(const t_stack *stack, char *option);
 int ft_stack_node_count(t_stack *stack);
 char *int_to_binary(int num);
+t_node* ft_find_max_node(t_stack *stack);
 
 //free.c
 void	ft_free_list(t_list **lst);

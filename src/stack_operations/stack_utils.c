@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:06:26 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/30 12:16:06 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/31 11:44:04 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	ft_initialize_stack_a(t_stack *stack_a, t_list *reverse_input, int *sorted_
 	{
 		number = reverse_input->content;
 		ft_stack_push(stack_a, ft_create_new_node(*number, sorted_array));
-        ft_print_stack(stack_a, "A");
 		reverse_input = reverse_input->next;
 	}
 }

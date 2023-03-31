@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 12:47:12 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/30 11:31:32 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/31 14:30:30 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	ft_stack_push(t_stack *stack, t_node *node)
 	t_node	*last;
 
 	if (!stack || !node) {
-        ft_printf("problem pushing the node in ft_stack_push : Stack or node is NULL\n");
         return;
     }
 
@@ -62,41 +61,32 @@ void	ft_stack_push(t_stack *stack, t_node *node)
 	stack->size++;
 }
 
-// void ft_stack_push(t_stack *stack, t_node *node)
-// {
-//    t_node  *top;
-
-//     if (!stack || !node) {
-//          ft_printf("problem pushing the node in ft_stack_push : Stack or node is NULL\n");
-//         return;
-//      }
-
-//     top = stack->top;
-//     if (!top)
-//     {
-//         node->next = NULL;
-//         node->prev = NULL;
-//     }
-//     else
-//     {
-//         node->next = top;
-//         node->prev = NULL;
-//         top->prev = node;
-//     }
-//     stack->top = node;
-//     stack->size++;
-// }
-
 void	ft_connect(t_node *first, t_node *second)
 {
 	if (!first) {
-        ft_printf("\n problem connecting nodes | Node 'first' is NULL\n");
         return;
     }
     if (!second) {
-        ft_printf("\n problem connecting nodes | Node 'second' is NULL\n");
         return;
     }
 	first->next = second;
 	second->prev = first;
+}
+
+t_node* ft_find_max_node(t_stack *stack) {
+    if (stack == NULL || stack->size == 0) {
+        return NULL; // Return NULL when the stack is empty or NULL
+    }
+
+    t_node *current = stack->top;
+    t_node *max_node = current;
+
+    while (current != NULL) {
+        if (current->value > max_node->value) {
+            max_node = current;
+        }
+        current = current->next;
+    }
+
+    return max_node;
 }

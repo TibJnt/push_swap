@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 10:08:56 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/29 10:47:22 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/31 11:36:45 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	ft_parse(int argc, char **argv, t_list **reverse_input, int **sort)
 {
 	char	**input;
 
-	ft_printf("begin parsing");
 	if (argc == 1)
 		exit(0);
 	if (argc > 2)

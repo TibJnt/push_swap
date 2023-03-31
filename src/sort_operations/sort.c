@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:10:22 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/30 12:21:50 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/31 14:50:33 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,16 @@ void ft_sort(t_stack *stack_a)
 		ft_swap(stack_a, SWAP_A);
 	else if (stack_a->size == 3)
 		ft_sort_three(stack_a);
+	else if (stack_a->size == 4)
+		ft_sort_four(stack_a);	
+	else if (stack_a->size == 5)
+		ft_sort_five(stack_a);
 	else
 		ft_sort_big(stack_a);
 }
 
 void ft_sort_three(t_stack *stack_a) {
-    if (stack_a == NULL || stack_a->size != 3) {
+    if (stack_a == NULL) {
         return;
     }
 
@@ -97,7 +101,6 @@ void ft_sort_three(t_stack *stack_a) {
     t_node *second = first->next;
     t_node *third = second->next;
 
-	ft_printf("begin sort three\n");
     if (first->index > second->index && second->index < third->index && first->index < third->index) {
         ft_swap(stack_a, "sa");
     } else if (first->index > second->index && second->index > third->index && first->index > third->index) {
@@ -111,6 +114,34 @@ void ft_sort_three(t_stack *stack_a) {
     } else if (first->index < second->index && second->index > third->index && first->index > third->index) {
         ft_rev_rotate(stack_a, "rra");
     }
+}
+
+void	ft_sort_four(t_stack *stack_a)
+{	
+	t_stack	stack_b;
+
+	ft_new_stack(&stack_b);
+	while (stack_a->top->index != 0)
+		ft_rotate(stack_a, "\nra");
+	ft_push_node(stack_a, &stack_b, PUSH_B);
+	ft_sort_three(stack_a);
+	ft_push_node(&stack_b, stack_a, PUSH_A);
+	ft_printf("sort four\n");
+	ft_print_stack(stack_a, "stack_a");
+}
+
+void	ft_sort_five(t_stack *stack_a)
+{
+	t_stack	stack_b;
+	int	i;
+
+	ft_new_stack(&stack_b);
+	i = 0;
+	while (stack_a->top->index != 0)
+		ft_rotate(stack_a, "ra");
+	ft_push_node(stack_a, &stack_b, PUSH_B);
+	ft_sort_four(stack_a);
+	ft_push_node(&stack_b, stack_a, PUSH_A);
 }
 
 
@@ -131,25 +162,14 @@ void 	ft_sort_big(t_stack *stack_a)
 		max_num = max_num >> 1;
 		max_bits++;
 	}
-	ft_printf("\nmax_bits: %d\n", max_bits);
 	i = 0;
 	while (i < max_bits)
 	{
-		ft_printf("SORT %d DIGIT\n", i);
 		ft_sort_digits(stack_a, &stack_b, i);
-		ft_print_stack(stack_a, "A");
-		ft_print_stack(&stack_b, "B");
-		ft_printf("STACK A SIZE = %d // ALT VALUE = %d \n", stack_a->size, ft_stack_node_count(stack_a));
-		ft_printf("STACK B SIZE = %d // ALT VALUE = %d \n", stack_b.size, ft_stack_node_count(&stack_b));
 		while (stack_b.size)
 			ft_push_node(&stack_b, stack_a, PUSH_A);
 		stack_b.top = NULL;
-		ft_print_stack(stack_a, "A");
-		ft_print_stack(&stack_b, "B");
-		ft_printf("STACK A SIZE = %d // ALT VALUE = %d \n", stack_a->size, ft_stack_node_count(stack_a));
-		ft_printf("STACK B SIZE = %d // ALT VALUE = %d \n", stack_b.size, ft_stack_node_count(&stack_b));
 		i++;
-
 	}	
 }
 
@@ -163,7 +183,6 @@ void	ft_sort_digits(t_stack *stack_a, t_stack *stack_b, int bit)
 	size = stack_a->size;
 	while (i < size)
 	{
-		ft_printf("sort digit / i = %d\n", i);
 		num = stack_a->top->index;
 		if ((num >> bit) & 1)
 			ft_rotate(stack_a, ROTATE_A);
