@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:10:22 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/31 14:50:33 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/03/31 14:56:42 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,9 +123,9 @@ void	ft_sort_four(t_stack *stack_a)
 	ft_new_stack(&stack_b);
 	while (stack_a->top->index != 0)
 		ft_rotate(stack_a, "\nra");
-	ft_push_node(stack_a, &stack_b, PUSH_B);
+	ft_push_node(stack_a, &stack_b, "\npb\n");
 	ft_sort_three(stack_a);
-	ft_push_node(&stack_b, stack_a, PUSH_A);
+	ft_push_node(&stack_b, stack_a, "\npa\n");
 	ft_printf("sort four\n");
 	ft_print_stack(stack_a, "stack_a");
 }
