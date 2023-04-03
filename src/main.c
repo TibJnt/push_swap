@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 12:15:20 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/31 12:36:22 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/04/03 12:12:32 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	ft_error_exit(void)
 {
-	ft_printf("-->Error\n");
+	write(2, "Error\n", 6);
+	// ft_printf("Error\n");
 	exit(-1);
 }
 
@@ -53,6 +54,6 @@ int main (int argc, char **argv)
 	ft_lstclear(&reverse_input, ft_free_null);
 	ft_sort(&stack_a);
 	free(sort);
-	system("leaks push_swap");
+	// system("leaks push_swap");
 	return (SUCCESS);
 }

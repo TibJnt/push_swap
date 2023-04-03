@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:10:22 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/31 14:56:42 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/04/03 12:18:01 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,17 +102,17 @@ void ft_sort_three(t_stack *stack_a) {
     t_node *third = second->next;
 
     if (first->index > second->index && second->index < third->index && first->index < third->index) {
-        ft_swap(stack_a, "sa");
+        ft_swap(stack_a, "sa\n");
     } else if (first->index > second->index && second->index > third->index && first->index > third->index) {
-        ft_swap(stack_a, "sa");
-        ft_rev_rotate(stack_a, "rra");
+        ft_swap(stack_a, "sa\n");
+        ft_rev_rotate(stack_a, "rra\n");
     } else if (first->index > second->index && second->index < third->index && first->index > third->index) {
-        ft_rotate(stack_a, "ra");
+        ft_rotate(stack_a, "ra\n");
     } else if (first->index < second->index && second->index > third->index && first->index < third->index) {
-        ft_swap(stack_a, "sa");
-        ft_rotate(stack_a, "ra");
+        ft_swap(stack_a, "sa\n");
+        ft_rotate(stack_a, "ra\n");
     } else if (first->index < second->index && second->index > third->index && first->index > third->index) {
-        ft_rev_rotate(stack_a, "rra");
+        ft_rev_rotate(stack_a, "rra\n");
     }
 }
 
@@ -122,26 +122,28 @@ void	ft_sort_four(t_stack *stack_a)
 
 	ft_new_stack(&stack_b);
 	while (stack_a->top->index != 0)
-		ft_rotate(stack_a, "\nra");
-	ft_push_node(stack_a, &stack_b, "\npb\n");
+		ft_rotate(stack_a, "ra\n");
+	ft_push_node(stack_a, &stack_b, "pb\n");
 	ft_sort_three(stack_a);
-	ft_push_node(&stack_b, stack_a, "\npa\n");
-	ft_printf("sort four\n");
-	ft_print_stack(stack_a, "stack_a");
+	ft_push_node(&stack_b, stack_a, "pa\n");
+	// ft_print_stack(stack_a, "stack_a");
 }
 
 void	ft_sort_five(t_stack *stack_a)
 {
 	t_stack	stack_b;
-	int	i;
 
 	ft_new_stack(&stack_b);
-	i = 0;
 	while (stack_a->top->index != 0)
-		ft_rotate(stack_a, "ra");
+		ft_rotate(stack_a, "ra\n");
 	ft_push_node(stack_a, &stack_b, PUSH_B);
-	ft_sort_four(stack_a);
+	while (stack_a->top->index != 1)
+		ft_rotate(stack_a, "ra\n");
+	ft_push_node(stack_a, &stack_b, PUSH_B);
+	ft_sort_three(stack_a);
 	ft_push_node(&stack_b, stack_a, PUSH_A);
+	ft_push_node(&stack_b, stack_a, PUSH_A);
+	// ft_print_stack(stack_a, "stack_a");
 }
 
 

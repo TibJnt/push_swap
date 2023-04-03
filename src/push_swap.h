@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:35:22 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/31 14:43:32 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/04/03 13:23:01 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void    ft_push_node(t_stack *src, t_stack *dest, char *option);
 void	ft_parse(int argc, char **argv, t_list **reverse_input, int **sort);
 void	ft_list_to_array(t_list	**list, int **sort);
 void	ft_add_number_sorting(t_list *new, t_list **list);
+int		check_int_overflow(char *str);
 
 // ========================== SORT ===================================== //
 
@@ -93,6 +94,7 @@ t_node* ft_find_max_node(t_stack *stack);
 void	ft_free_list(t_list **lst);
 void	ft_free_char_2pointer(char **pointer);
 void	ft_free_null(void *pointer);
+void    ft_free_stack(t_stack *stack);
 
 //main.c
 void	ft_error_exit(void);
