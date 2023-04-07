@@ -6,30 +6,11 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:10:22 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/04/03 12:18:01 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/04/07 13:33:31 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_is_already_sort(t_list *list)
-{
-	int	*number;
-	int	*next_number;
-
-	number = list->content;
-	list = list->next;
-	while (list)
-	{
-		next_number = (int *)list->content;
-		if (*number < *next_number)
-			return (0);
-		number = next_number;
-		list = list->next;
-	}
-	ft_lstclear(&list, ft_free_null);
-	return (1);
-}
 
 void	ft_list_to_array(t_list	**list, int **sort)
 {
@@ -49,7 +30,7 @@ void	ft_list_to_array(t_list	**list, int **sort)
 		++array;
 		tmp = tmp->next;
 	}
-}   
+}
 
 void	ft_add_number_sorting(t_list *new, t_list **list)
 {
@@ -77,119 +58,56 @@ void	ft_add_number_sorting(t_list *new, t_list **list)
 	ft_lstadd_back(list, new);
 }
 
-
-void ft_sort(t_stack *stack_a)
+void	ft_sort(t_stack *stack_a)
 {
 	if (stack_a->size == 2)
 		ft_swap(stack_a, SWAP_A);
 	else if (stack_a->size == 3)
 		ft_sort_three(stack_a);
 	else if (stack_a->size == 4)
-		ft_sort_four(stack_a);	
+		ft_sort_four(stack_a);
 	else if (stack_a->size == 5)
 		ft_sort_five(stack_a);
 	else
 		ft_sort_big(stack_a);
+	ft_free_stack(stack_a);
 }
 
-void ft_sort_three(t_stack *stack_a) {
-    if (stack_a == NULL) {
-        return;
-    }
-
-    t_node *first = stack_a->top;
-    t_node *second = first->next;
-    t_node *third = second->next;
-
-    if (first->index > second->index && second->index < third->index && first->index < third->index) {
-        ft_swap(stack_a, "sa\n");
-    } else if (first->index > second->index && second->index > third->index && first->index > third->index) {
-        ft_swap(stack_a, "sa\n");
-        ft_rev_rotate(stack_a, "rra\n");
-    } else if (first->index > second->index && second->index < third->index && first->index > third->index) {
-        ft_rotate(stack_a, "ra\n");
-    } else if (first->index < second->index && second->index > third->index && first->index < third->index) {
-        ft_swap(stack_a, "sa\n");
-        ft_rotate(stack_a, "ra\n");
-    } else if (first->index < second->index && second->index > third->index && first->index > third->index) {
-        ft_rev_rotate(stack_a, "rra\n");
-    }
-}
-
-void	ft_sort_four(t_stack *stack_a)
-{	
-	t_stack	stack_b;
-
-	ft_new_stack(&stack_b);
-	while (stack_a->top->index != 0)
-		ft_rotate(stack_a, "ra\n");
-	ft_push_node(stack_a, &stack_b, "pb\n");
-	ft_sort_three(stack_a);
-	ft_push_node(&stack_b, stack_a, "pa\n");
-	// ft_print_stack(stack_a, "stack_a");
-}
-
-void	ft_sort_five(t_stack *stack_a)
+void	ft_sort_three(t_stack *stack_a)
 {
-	t_stack	stack_b;
+	t_node	*first;
+	t_node	*second;
+	t_node	*third;
 
-	ft_new_stack(&stack_b);
-	while (stack_a->top->index != 0)
-		ft_rotate(stack_a, "ra\n");
-	ft_push_node(stack_a, &stack_b, PUSH_B);
-	while (stack_a->top->index != 1)
-		ft_rotate(stack_a, "ra\n");
-	ft_push_node(stack_a, &stack_b, PUSH_B);
-	ft_sort_three(stack_a);
-	ft_push_node(&stack_b, stack_a, PUSH_A);
-	ft_push_node(&stack_b, stack_a, PUSH_A);
-	// ft_print_stack(stack_a, "stack_a");
-}
-
-
-void 	ft_sort_big(t_stack *stack_a)
-{
-	t_stack	stack_b;
-	int		size;
-	int		max_num;
-	int		max_bits;
-	int		i;
-
-	ft_new_stack(&stack_b);
-	size = stack_a->size;
-	max_num = size - 1;
-	max_bits = 0;
-	while (max_num)
+	if (stack_a == NULL)
+		return ;
+	first = stack_a->top;
+	second = first->next;
+	third = second->next;
+	help_three(stack_a, first, second, third);
+	if (first->index < second->index && second->index > third->index
+		&& first->index < third->index)
 	{
-		max_num = max_num >> 1;
-		max_bits++;
+		ft_swap(stack_a, "sa\n");
+		ft_rotate(stack_a, "ra\n");
 	}
-	i = 0;
-	while (i < max_bits)
-	{
-		ft_sort_digits(stack_a, &stack_b, i);
-		while (stack_b.size)
-			ft_push_node(&stack_b, stack_a, PUSH_A);
-		stack_b.top = NULL;
-		i++;
-	}	
+	else if (first->index < second->index && second->index > third->index
+		&& first->index > third->index)
+		ft_rev_rotate(stack_a, "rra\n");
 }
 
-void	ft_sort_digits(t_stack *stack_a, t_stack *stack_b, int bit)
+void	help_three(t_stack *stack_a, t_node *first, t_node *sec, t_node *third)
 {
-	int	num;
-	int	i;
-	int size;
-
-	i = 0;
-	size = stack_a->size;
-	while (i < size)
+	if (first->index > sec->index && sec->index < third->index
+		&& first->index < third->index)
+		ft_swap(stack_a, "sa\n");
+	else if (first->index > sec->index && sec->index > third->index
+		&& first->index > third->index)
 	{
-		num = stack_a->top->index;
-		if ((num >> bit) & 1)
-			ft_rotate(stack_a, ROTATE_A);
-		else
-			ft_push_node(stack_a, stack_b, PUSH_B);
-		i++;
+		ft_swap(stack_a, "sa\n");
+		ft_rev_rotate(stack_a, "rra\n");
 	}
+	else if (first->index > sec->index && sec->index < third->index
+		&& first->index > third->index)
+		ft_rotate(stack_a, "ra\n");
 }

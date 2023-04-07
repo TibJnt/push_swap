@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   operations_1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 16:06:11 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/03/31 11:52:39 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/04/07 11:55:57 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,12 @@ static void	ft_swap_op(t_stack *stack)
 
 	if (stack == NULL || stack->size <= 2)
 		return ;
-
 	first = stack->top;
 	second = first->next;
-
 	temp_index = first->index;
 	temp_value = first->value;
-
 	first->index = second->index;
 	first->value = second->value;
-
 	second->index = temp_index;
 	second->value = temp_value;
 }
@@ -48,49 +44,14 @@ void	ft_double_swap(t_stack *stack_a, t_stack *stack_b)
 	ft_printf("%s", SWAP_DOUBLE);
 }
 
-void ft_rotate(t_stack *stack, char *option) {
-    if (stack == NULL || stack->size < 2) {
-		return;
-    }
-	
-	t_node *first = stack->top;
-
-    t_node *second = first->next;
-
-	stack->top = second;
-	
-	ft_printf("%s", option);
-}
-
-void ft_rev_rotate(t_stack *stack, char *option) {
-	if (stack == NULL || stack->size <= 2) {
-		return;
-	}
-
-	t_node *last = stack->top->prev;
-
-	stack->top = last;
-
-	ft_printf("%s", option);
-}
-
-
-void ft_push_node(t_stack *src, t_stack *dest, char *option)
+void	ft_push_node(t_stack *src, t_stack *dest, char *option)
 {
-	t_node *node;
+	t_node	*node;
 
-	// Pop the top element from the source stack.
 	node = ft_pop(src);
-
-	// If the source stack is empty, return.
 	if (node == NULL)
-	{
-		return;
-	}
-	// Push the popped element to the destination stack.
+		return ;
 	ft_stack_push(dest, node);
-
-	// Print the operation.
 	ft_printf("%s", option);
 }
 

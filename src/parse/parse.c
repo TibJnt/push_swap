@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 10:08:56 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/04/03 13:38:19 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/04/07 11:42:54 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,6 @@ static int	ft_is_integer(int number)
 	if (number < INT_MIN)
 		return (0);
 	return (1);
-}
-
-int		check_int_overflow(char *str)
-{
-	if (str[0] == '-')
-	{
-		if (ft_atoi(str) > 0)
-			return (1);
-	}
-	if (str[0] != '-')
-	{
-		if (ft_atoi(str) < 0)
-			return (1);
-	}
-	return (0);
 }
 
 static int	ft_is_string_number(char *string)
@@ -55,12 +40,8 @@ static int	ft_parse_number(char *str_number, int *number)
 
 	if (!ft_is_string_number(str_number))
 		return (0);
-	// if (!check_int_overflow(str_number))
-	// 	return (0);
-	lnumber = ft_atoi(str_number);
-	// ft_printf("lnumber = %d\n", lnumber);
+	lnumber = ft_atoi_check(str_number);
 	*number = (int)lnumber;
-	// ft_printf("number = %d\n", *number);
 	return (ft_is_integer(lnumber));
 }
 
