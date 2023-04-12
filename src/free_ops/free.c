@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 10:50:28 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/04/07 13:51:05 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/04/12 16:27:13 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,23 @@ void	ft_free_stack(t_stack *stack)
 {
 	t_node	*current_node;
 	t_node	*next_node;
+	int		size;
+	int		i;
 
+	i = 0;
 	if (stack == NULL)
 		return ;
+	size = stack->size;
 	current_node = stack->top;
-	while (current_node != NULL)
+	next_node = stack->top;
+	while (i < size)
 	{
 		next_node = current_node->next;
 		free(current_node);
 		current_node = next_node;
+		i++;
 	}
-	// free(stack);
+
 }
 
 void	ft_free_list(t_list **lst)

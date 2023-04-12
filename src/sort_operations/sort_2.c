@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 12:19:39 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/04/07 13:34:19 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/04/07 14:02:38 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	ft_sort_four(t_stack *stack_a)
 	ft_push_node(stack_a, &stack_b, "pb\n");
 	ft_sort_three(stack_a);
 	ft_push_node(&stack_b, stack_a, "pa\n");
-    ft_free_stack(&stack_b);
 }
 
 void	ft_sort_five(t_stack *stack_a)
@@ -58,7 +57,6 @@ void	ft_sort_five(t_stack *stack_a)
 	ft_sort_three(stack_a);
 	ft_push_node(&stack_b, stack_a, PUSH_A);
 	ft_push_node(&stack_b, stack_a, PUSH_A);
-    ft_free_stack(&stack_b);
 }
 
 void	ft_sort_big(t_stack *stack_a)
@@ -86,7 +84,7 @@ void	ft_sort_big(t_stack *stack_a)
 			ft_push_node(&stack_b, stack_a, PUSH_A);
 		stack_b.top = NULL;
 		i++;
-	}	
+	}
 }
 
 void	ft_sort_digits(t_stack *stack_a, t_stack *stack_b, int bit)

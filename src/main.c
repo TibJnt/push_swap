@@ -6,12 +6,11 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 12:15:20 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/04/07 13:35:51 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/04/12 16:00:01 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 int	main(int argc, char **argv)
 {
 	t_stack		stack_a;
@@ -28,6 +27,5 @@ int	main(int argc, char **argv)
 	ft_lstclear(&reverse_input, ft_free_null);
 	ft_sort(&stack_a);
 	free(sort);
-	// system("leaks push_swap");
 	return (SUCCESS);
 }
