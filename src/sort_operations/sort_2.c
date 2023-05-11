@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 12:19:39 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/04/07 14:02:38 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/05/11 12:42:12 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,21 @@ void	ft_sort_four(t_stack *stack_a)
 	ft_push_node(&stack_b, stack_a, "pa\n");
 }
 
+void	stack_printf(t_stack	*sactk)
+{
+	t_node	*nod;
+	int	i;
+
+	nod = sactk->top;
+	i = 0;
+	while ( i < sactk->size)
+	{
+		ft_printf("index:%d, value:%d\n", nod->index, nod->value);
+		nod = nod->next;
+		i++;
+	}
+}
+
 void	ft_sort_five(t_stack *stack_a)
 {
 	t_stack	stack_b;
@@ -57,6 +72,43 @@ void	ft_sort_five(t_stack *stack_a)
 	ft_sort_three(stack_a);
 	ft_push_node(&stack_b, stack_a, PUSH_A);
 	ft_push_node(&stack_b, stack_a, PUSH_A);
+	stack_printf(stack_a);
+
+	// while (stack_a->size != 3)
+	// {
+	// 	if (find_num(stack_a, 4) == 0 || find_num(stack_a, 3) == 0)
+	// 		ft_push_node(stack_a, &stack_b, PUSH_B);
+	// 	else if (find_num(stack_a, 4) == 1 || find_num(stack_a, 3) == 1)
+	// 		ft_rotate(stack_a, "ra\n");
+	// 	else if (find_num(stack_a, 4) >= 2 || find_num(stack_a, 3) >= 2)
+	// 		ft_rev_rotate(stack_a, "rra\n");
+	// }
+	// ft_sort_three(stack_a);
+	// if (stack_b.top->index > stack_b.top->next->index)
+	// 	ft_swap(&stack_b, "sb\n");
+	// while (stack_b.size)
+	// 	ft_push_node(&stack_b, stack_a, PUSH_A);
+	// ft_rotate(stack_a, "ra\n");
+	// ft_rotate(stack_a, "ra\n");
+	// while (1)
+	// {
+	// if (find_num(stack_a, 4) == 0 || find_num(stack_a, 3) == 0)
+	// 	ft_push_node(stack_a, &stack_b, PUSH_B);
+	// if (find_num(stack_a, 4) == 1 || find_num(stack_a, 3) == 1)
+	// 		ft_rotate(stack_a, "ra\n");
+	// else if (find_num(stack_a, 4) >= 2 || find_num(stack_a, 3) >= 2)
+	// 		ft_rev_rotate(stack_a, "rra\n");
+	// if (stack_a->size == 3)
+	// 	break;
+	// }
+	// ft_sort_three(stack_a);
+	// // if (stack_b.top->index > stack_b.top->next->index)
+	// // 	ft_swap(&stack_b, "sb\n");
+	// ft_push_node(&stack_b, stack_a, PUSH_A);
+	// ft_push_node(&stack_b, stack_a, PUSH_A);
+	// ft_rotate(stack_a, "ra\n");
+	// ft_rotate(stack_a, "ra\n");
+	// stack_printf(stack_a);
 }
 
 void	ft_sort_big(t_stack *stack_a)

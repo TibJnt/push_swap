@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:35:22 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/04/07 13:12:56 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/05/11 11:02:06 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ void	ft_print_stack(const t_stack *stack, char *option);
 int		ft_stack_node_count(t_stack *stack);
 char	*int_to_binary(int num);
 t_node	*ft_find_max_node(t_stack *stack);
+t_node 	*find_node(t_stack *stack, int index);
+int		find_num(t_stack *stack, int num);
 
 //free.c
 void	ft_free_list(t_list **lst);
@@ -103,5 +105,6 @@ void	ft_free_stack(t_stack *stack);
 int		ft_atoi_check(const char *str);
 int		ft_atoi_check_helper(int sign, int i, const char *str);
 void	ft_error_exit(void);
+void	stack_printf(t_stack	*sactk);
 
 #endif
