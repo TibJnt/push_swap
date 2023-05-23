@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:10:22 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/05/11 12:51:20 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/05/23 12:38:24 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,31 +73,21 @@ void	ft_sort(t_stack *stack_a)
 	ft_free_stack(stack_a);
 }
 
-
-
-
-
-
-int	is_stack_sorted(t_stack *stack)
-{
-	t_node	*node;
-	int	i;
-	int	l = 1;
-
-	i = 0;
-	node = stack->top;
-	while (i < stack->size)
-	{
-		if (node->value > node->next->value)
-		{
-			l = 0;
-			break;
-		}
-		node = node->next;
-		i++;
-	}
-	return (l);
-}
+// void	help_three(t_stack *stack_a, t_node *first, t_node *sec, t_node *third)
+// {
+// 	if (first->index > sec->index && sec->index < third->index
+// 		&& first->index < third->index)
+// 		ft_swap(stack_a, "sa\n");
+// 	else if (first->index > sec->index && sec->index > third->index
+// 		&& first->index > third->index)
+// 	{
+// 		ft_swap(stack_a, "sa\n");
+// 		ft_rev_rotate(stack_a, "rra\n");
+// 	}
+// 	else if (first->index > sec->index && sec->index < third->index
+// 		&& first->index > third->index)
+// 		ft_rotate(stack_a, "ra\n");
+// }
 
 // void	ft_sort_three(t_stack *stack_a)
 // {
@@ -105,85 +95,72 @@ int	is_stack_sorted(t_stack *stack)
 // 	t_node	*second;
 // 	t_node	*third;
 
-// 	if (stack_a == NULL)
+// 	if (stack_a == NULL || stack_a->top == NULL || stack_a->top->next == NULL
+// 		|| stack_a->top->next->next == NULL)
 // 		return ;
 // 	first = stack_a->top;
 // 	second = first->next;
 // 	third = second->next;
-// 	help_three(stack_a, first, second, third);
 // 	if (first->index < second->index && second->index > third->index
 // 		&& first->index < third->index)
 // 	{
 // 		ft_swap(stack_a, "sa\n");
 // 		ft_rotate(stack_a, "ra\n");
 // 	}
+// 	else if (first->index > second->index && second->index < third->index
+// 		&& first->index < third->index)
+// 		ft_swap(stack_a, "sa\n");
+// 	else if (first->index > second->index && second->index > third->index
+// 		&& first->index > third->index)
+// 	{
+// 		ft_rotate(stack_a, "ra\n");
+// 		ft_swap(stack_a, "sa\n");
+// 	}
 // 	else if (first->index < second->index && second->index > third->index
 // 		&& first->index > third->index)
 // 		ft_rev_rotate(stack_a, "rra\n");
-
-// 	// while (!is_stack_sorted(stack_a))
-// 	// {
-// 	// 	if (find_num(stack_a, 0) == 2 && find_num(stack_a, 2) != 0)
-// 	// 		ft_rev_rotate(stack_a, "rra\n");
-// 	// 	else if (find_num(stack_a, 0) == 1 && find_num(stack_a, 2) != 0)
-// 	// 		ft_swap(stack_a, "sa\n");
-// 	// 	else if (find_num(stack_a, 2) == 0 && find_num(stack_a, 0) != 1)
-// 	// 		ft_swap(stack_a, "sa\n");
-// 	// 	else if (find_num(stack_a, 2) == 0 && find_num(stack_a, 0) == 1)
-// 	// 		ft_rotate(stack_a, "ra\n");
-// 	// 	else if (find_num(stack_a, 2) == 1 && find_num(stack_a, 0) == 0)
-// 	// 		ft_rev_rotate(stack_a, "rra\n");
-// 	// 	else if (find_num(stack_a, 2) == 0 && find_num(stack_a, 0) == 2)
-// 	// 		ft_rotate(stack_a, "ra\n");
-// 	// 	ft_printf("ddd");
-// 	// }
+// 	else if (first->index > second->index && second->index < third->index
+// 		&& first->index > third->index)
+// 		ft_rotate(stack_a, "ra\n");
 // }
 
-void	help_three(t_stack *stack_a, t_node *first, t_node *sec, t_node *third)
+void	help_three(t_stack *stack_a, t_node *first,
+	t_node *second, t_node *third)
 {
-	if (first->index > sec->index && sec->index < third->index
+	if (first->index < second->index && second->index > third->index
 		&& first->index < third->index)
-		ft_swap(stack_a, "sa\n");
-	else if (first->index > sec->index && sec->index > third->index
-		&& first->index > third->index)
 	{
 		ft_swap(stack_a, "sa\n");
-		ft_rev_rotate(stack_a, "rra\n");
+		ft_rotate(stack_a, "ra\n");
 	}
-	else if (first->index > sec->index && sec->index < third->index
+	else if (first->index > second->index && second->index < third->index
+		&& first->index < third->index)
+		ft_swap(stack_a, "sa\n");
+	else if (first->index > second->index && second->index > third->index
+		&& first->index > third->index)
+	{
+		ft_rotate(stack_a, "ra\n");
+		ft_swap(stack_a, "sa\n");
+	}
+	else if (first->index < second->index && second->index > third->index
+		&& first->index > third->index)
+		ft_rev_rotate(stack_a, "rra\n");
+	else if (first->index > second->index && second->index < third->index
 		&& first->index > third->index)
 		ft_rotate(stack_a, "ra\n");
 }
 
+void	ft_sort_three(t_stack *stack_a)
+{
+	t_node	*first;
+	t_node	*second;
+	t_node	*third;
 
-void ft_sort_three(t_stack *stack_a) {
-    t_node *first;
-    t_node *second;
-    t_node *third;
-
-    if (stack_a == NULL || stack_a->top == NULL || stack_a->top->next == NULL || stack_a->top->next->next == NULL) {
-        return; // Less than three elements, nothing to sort
-    }
-
-    first = stack_a->top;
-    second = first->next;
-    third = second->next;
-
-    if (first->index < second->index && second->index > third->index && first->index < third->index) { // 1 3 2
-        ft_swap(stack_a, "sa\n");
-        ft_rotate(stack_a, "ra\n");
-    } else if (first->index > second->index && second->index < third->index && first->index < third->index) { // 2 1 3
-        ft_swap(stack_a, "sa\n");
-    } else if (first->index > second->index && second->index > third->index && first->index > third->index) { // 3 2 1
-        ft_rotate(stack_a, "ra\n");
-        ft_swap(stack_a, "sa\n");
-    } else if (first->index < second->index && second->index > third->index && first->index > third->index) { // 2 3 1
-        ft_rev_rotate(stack_a, "rra\n");
-    } else if (first->index > second->index && second->index < third->index && first->index > third->index) { // 3 1 2
-        ft_rotate(stack_a, "ra\n");
-    }
+	if (stack_a == NULL || stack_a->top == NULL || stack_a->top->next == NULL
+		|| stack_a->top->next->next == NULL)
+		return ;
+	first = stack_a->top;
+	second = first->next;
+	third = second->next;
+	help_three(stack_a, first, second, third);
 }
-
-
-
-

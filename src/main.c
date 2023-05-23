@@ -6,11 +6,12 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 12:15:20 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/04/12 16:00:01 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/05/23 11:57:00 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 int	main(int argc, char **argv)
 {
 	t_stack		stack_a;

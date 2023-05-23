@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:06:26 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/05/10 12:52:27 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/05/23 12:02:43 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,28 @@ int	find_num(t_stack *stack, int num)
 		node = node->next;
 		pos++;
 	}
+	// ft_printf("pos returned:%d \n", pos);
 	return (pos);
+}
+
+int	is_stack_sorted(t_stack *stack)
+{
+	t_node	*node;
+	int		i;
+	int		l;
+
+	i = 0;
+	l = 1;
+	node = stack->top;
+	while (i < stack->size)
+	{
+		if (node->value > node->next->value)
+		{
+			l = 0;
+			break ;
+		}
+		node = node->next;
+		i++;
+	}
+	return (l);
 }

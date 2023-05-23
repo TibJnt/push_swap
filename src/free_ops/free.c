@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 10:50:28 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/04/12 16:27:13 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/05/23 11:58:41 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	ft_free_stack(t_stack *stack)
 		current_node = next_node;
 		i++;
 	}
-
 }
 
 void	ft_free_list(t_list **lst)
