@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:10:22 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/05/23 12:38:24 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/05/25 10:35:45 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,57 +72,6 @@ void	ft_sort(t_stack *stack_a)
 		ft_sort_big(stack_a);
 	ft_free_stack(stack_a);
 }
-
-// void	help_three(t_stack *stack_a, t_node *first, t_node *sec, t_node *third)
-// {
-// 	if (first->index > sec->index && sec->index < third->index
-// 		&& first->index < third->index)
-// 		ft_swap(stack_a, "sa\n");
-// 	else if (first->index > sec->index && sec->index > third->index
-// 		&& first->index > third->index)
-// 	{
-// 		ft_swap(stack_a, "sa\n");
-// 		ft_rev_rotate(stack_a, "rra\n");
-// 	}
-// 	else if (first->index > sec->index && sec->index < third->index
-// 		&& first->index > third->index)
-// 		ft_rotate(stack_a, "ra\n");
-// }
-
-// void	ft_sort_three(t_stack *stack_a)
-// {
-// 	t_node	*first;
-// 	t_node	*second;
-// 	t_node	*third;
-
-// 	if (stack_a == NULL || stack_a->top == NULL || stack_a->top->next == NULL
-// 		|| stack_a->top->next->next == NULL)
-// 		return ;
-// 	first = stack_a->top;
-// 	second = first->next;
-// 	third = second->next;
-// 	if (first->index < second->index && second->index > third->index
-// 		&& first->index < third->index)
-// 	{
-// 		ft_swap(stack_a, "sa\n");
-// 		ft_rotate(stack_a, "ra\n");
-// 	}
-// 	else if (first->index > second->index && second->index < third->index
-// 		&& first->index < third->index)
-// 		ft_swap(stack_a, "sa\n");
-// 	else if (first->index > second->index && second->index > third->index
-// 		&& first->index > third->index)
-// 	{
-// 		ft_rotate(stack_a, "ra\n");
-// 		ft_swap(stack_a, "sa\n");
-// 	}
-// 	else if (first->index < second->index && second->index > third->index
-// 		&& first->index > third->index)
-// 		ft_rev_rotate(stack_a, "rra\n");
-// 	else if (first->index > second->index && second->index < third->index
-// 		&& first->index > third->index)
-// 		ft_rotate(stack_a, "ra\n");
-// }
 
 void	help_three(t_stack *stack_a, t_node *first,
 	t_node *second, t_node *third)

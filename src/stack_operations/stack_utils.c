@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:06:26 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/05/23 12:02:43 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/05/25 10:00:23 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,20 @@ void	ft_init_stack_a(t_stack *stack_a, t_list *rev_input, int *sort_array)
 	}
 }
 
-t_node *find_node(t_stack *stack, int index) {
+t_node	*find_node(t_stack *stack, int index)
+{
+	t_node	*current;
 
-    if (stack == NULL || stack->top == NULL) {
-        return NULL; // return NULL if the stack is empty
-    }
-
-    t_node *current = stack->top;
-
-    while (current != NULL) {
-        if (current->index == index) {
-            return current; // return the node if the index matches
-        }
-        current = current->prev; // go to the previous node
-    }
-
-    return NULL; // return NULL if the node was not found
+	if (stack == NULL || stack->top == NULL)
+		return (NULL);
+	current = stack->top;
+	while (current != NULL)
+	{
+		if (current->index == index)
+			return (current);
+		current = current->prev;
+	}
+	return (NULL);
 }
 
 int	find_num(t_stack *stack, int num)
@@ -55,14 +53,13 @@ int	find_num(t_stack *stack, int num)
 
 	pos = 0;
 	node = stack->top;
-	while ( pos < stack->size)
+	while (pos < stack->size)
 	{
 		if (node->index == num)
 			break ;
 		node = node->next;
 		pos++;
 	}
-	// ft_printf("pos returned:%d \n", pos);
 	return (pos);
 }
 
