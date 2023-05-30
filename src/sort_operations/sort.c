@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:10:22 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/05/25 10:35:45 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/05/30 15:29:28 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_list_to_array(t_list	**list, int **sort)
 
 	size = ft_lstsize(*list);
 	array = ft_calloc(size + 1, sizeof(int));
+	// printf("%p = array // %d = value \n", array, *array);
 	*sort = array;
 	tmp = *list;
 	while (tmp)
@@ -30,6 +31,7 @@ void	ft_list_to_array(t_list	**list, int **sort)
 		++array;
 		tmp = tmp->next;
 	}
+	// free(array);
 }
 
 void	ft_add_number_sorting(t_list *new, t_list **list)

@@ -51,12 +51,14 @@ BG_Black				=\033[40m
 
 # ========================== MAKE RULES ===================================== #
 
-all: $(NAME)
+all: smake $(NAME)
 	@echo "\n\n$(BG_Purple)$(GREEN)==== Project push_swap compiled! ==== ✅$(DEF_COLOR)$(BG_Black)\n"
 	@touch $(NAME)
 
-$(NAME):$(OBJ_SRC)
+smake:
 	@make bonus -C  $(LIBFT_DIR)
+$(NAME):$(OBJ_SRC)
+	#@make bonus -C  $(LIBFT_DIR)
 	@$(CC) $(CFLAGS) $(OBJ_SRC) -L$(LIBFT_DIR) -lft $(INCLUDE)$(LIBFT_DIR) -o $@
 
 $(OBJ_SRC): | $(OBJ_DIR)
@@ -66,11 +68,12 @@ $(OBJ_DIR):
 
 $(OBJ_DIR)/%.o: %.c $(HEADER)
 	@printf "$(YELLOW)\r $@$(DEF_COLOR)"
-	@$(CC) $(CFLAGS) -I$(LIBFT_DIR) -I$(SRC_DIR) -c $< -o $@
+	@$(CC) $(CFLAGS)  -I$(SRC_DIR) -c $< -o $@
+	#@$(CC) $(CFLAGS) -I$(LIBFT_DIR) -I$(SRC_DIR) -c $< -o $@
 
 # ========================== CLEAN   ===================================== #
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re smake
 
 clean:
 	@make clean -C $(LIBFT_DIR)

@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:35:22 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/05/23 11:57:47 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/05/30 11:43:39 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_push_node(t_stack *src, t_stack *dest, char *option);
 
 // ========================== PARSE =================================== //
 
-void	ft_parse(int argc, char **argv, t_list **reverse_input, int **sort);
+void	ft_parse(int argc, char **argv, t_list **reverse_input, int **sort, int *num);
 void	ft_list_to_array(t_list	**list, int **sort);
 void	ft_add_number_sorting(t_list *new, t_list **list);
 int		check_int_overflow(char *str);

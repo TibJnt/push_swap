@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 10:08:56 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/04/07 11:42:54 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/05/30 15:36:05 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,8 @@ static int	ft_parse_number(char *str_number, int *number)
 	return (ft_is_integer(lnumber));
 }
 
-static void	ft_parse_input(char **input, t_list **reverse_input, int **sort)
+static void	ft_parse_input(char **input, t_list **reverse_input, int **sort, int *number)
 {
-	int		*number;
 	t_list	*sorted_list;
 
 	sorted_list = NULL;
@@ -60,21 +59,23 @@ static void	ft_parse_input(char **input, t_list **reverse_input, int **sort)
 		ft_lstadd_front(reverse_input, ft_lstnew(number));
 	}
 	ft_list_to_array(&sorted_list, sort);
+	// if (sort)
+	// 	free(*sort);
 	ft_free_list(&sorted_list);
 }
 
-void	ft_parse(int argc, char **argv, t_list **reverse_input, int **sort)
+void	ft_parse(int argc, char **argv, t_list **reverse_input, int **sort, int *num)
 {
 	char	**input;
 
 	if (argc == 1)
 		exit(0);
 	if (argc > 1)
-		ft_parse_input(argv + 1, reverse_input, sort);
+		ft_parse_input(argv + 1, reverse_input, sort, num);
 	else
 	{
 		input = ft_split(argv[1], ' ');
-		ft_parse_input(input, reverse_input, sort);
+		ft_parse_input(input, reverse_input, sort, num);
 		ft_free_char_2pointer(input);
 	}
 }
