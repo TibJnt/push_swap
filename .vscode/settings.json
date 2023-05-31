@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "push_swap.h": "c",
-        "algorithm": "c",
-        "cstdlib": "c",
-        "locale": "c",
-        "utility": "c"
-    }
-}
