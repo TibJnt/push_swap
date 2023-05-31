@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:35:22 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/05/31 10:05:48 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/05/31 12:11:06 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
-# include"../libft/libft.h"
+# include"../Libft/libft.h"
 
 # define SUCCESS 0
 
