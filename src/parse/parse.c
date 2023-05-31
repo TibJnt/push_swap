@@ -6,7 +6,7 @@
 /*   By: tjeunet <tjeunet@student.42barcelona.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 10:08:56 by tjeunet           #+#    #+#             */
-/*   Updated: 2023/05/30 15:36:05 by tjeunet          ###   ########.fr       */
+/*   Updated: 2023/05/31 10:26:28 by tjeunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ static int	ft_parse_number(char *str_number, int *number)
 	return (ft_is_integer(lnumber));
 }
 
-static void	ft_parse_input(char **input, t_list **reverse_input, int **sort, int *number)
+static void	ft_parse_input(char **input, t_list **reverse_input,
+	int **sort, int *number)
 {
 	t_list	*sorted_list;
 
@@ -59,15 +60,15 @@ static void	ft_parse_input(char **input, t_list **reverse_input, int **sort, int
 		ft_lstadd_front(reverse_input, ft_lstnew(number));
 	}
 	ft_list_to_array(&sorted_list, sort);
-	// if (sort)
-	// 	free(*sort);
 	ft_free_list(&sorted_list);
 }
 
-void	ft_parse(int argc, char **argv, t_list **reverse_input, int **sort, int *num)
+void	ft_parse(int argc, char **argv, t_list **reverse_input, int **sort)
 {
 	char	**input;
+	int		*num;
 
+	num = NULL;
 	if (argc == 1)
 		exit(0);
 	if (argc > 1)
